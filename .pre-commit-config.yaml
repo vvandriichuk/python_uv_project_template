@@ -1,0 +1,38 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-json
+      - id: check-yaml
+      - id: check-added-large-files
+
+  # Mypy check
+  - repo: local
+    hooks:
+      - id: mypy-check
+        name: mypy check
+        entry: uv run mypy my_package
+        language: system
+        types: [python]
+        pass_filenames: false
+
+  # Check with Ruff (replacement for flake8, isort, etc)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  # Running tests with pytest
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest check
+        entry: uv run pytest tests/
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
