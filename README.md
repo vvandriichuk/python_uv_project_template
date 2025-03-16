@@ -50,6 +50,17 @@ uv tree
 uv run pytest tests/
 ```
 
+## Docker
+### Build the image
+```sh
+docker build -t python-uv-project .
+```
+
+### Run the container
+```sh
+docker run python-uv-project
+```
+
 ## Installing and Configuring Pyright for a Python Project with uv
 
 ### What is Pyright and Why Use It
