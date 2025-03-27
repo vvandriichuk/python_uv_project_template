@@ -17,11 +17,20 @@ uv python uninstall 3.13.2
 uv python pin 3.13.2
 ```
 
-## If I want to change the version of Python for current running the code I can change the verion in the file .python-version
+If I want to change the version of Python for current running the code I can change the verion in the file .python-version
 
 ## Init the project
 ```sh
 uv init
+```
+## Create venv
+
+```sh
+# Create virtual env
+uv venv ./.venv
+
+# Activate venv
+source ./.venv/bin/activate
 ```
 
 ## Installing Dependencies with uv
