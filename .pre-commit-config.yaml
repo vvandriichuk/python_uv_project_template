@@ -8,15 +8,22 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
 
-  # Mypy check
+  # Mypy and Pyright check
   - repo: local
     hooks:
-      - id: mypy-check
-        name: mypy check
-        entry: uv run mypy my_package
-        language: system
-        types: [python]
-        pass_filenames: false
+        - id: mypy-check
+          name: mypy check
+          entry: uv run mypy src
+          language: system
+          types: [ python ]
+          pass_filenames: false
+
+        - id: pyright-check
+          name: pyright check
+          entry: uv run pyright src
+          language: system
+          types: [ python ]
+          pass_filenames: false
 
   # Check with Ruff (replacement for flake8, isort, etc)
   - repo: https://github.com/astral-sh/ruff-pre-commit

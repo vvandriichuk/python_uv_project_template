@@ -21,7 +21,8 @@ dev = [
     "pre-commit>=4.1.0",
     "mypy>=1.15.0",
     "ruff>=0.11.0",
-    "types-requests"
+    "types-requests",
+    "pyright>=1.1.398",
 ]
 
 [tool.ruff]
@@ -65,7 +66,7 @@ ignore = [
     "RET505", # it fixes <Unnecessary `elif` after `return` statement>
     "S307", # it fixes <Use of possibly insecure function; consider using `ast.literal_eval`>
     "E731", # it fixes <Do not assign a lambda expression to a variable>
-    "A002", # [Nazareka] langchain uses "input" as parameter name, so why we couldn't?
+    "A002", # langchain uses "input" as parameter name, so why we couldn't?
     "FA102", # it fixes <Use `from __future__ import annotations`>
     "COM812", # Avoid conflicts with the formatter
 ]
@@ -99,7 +100,6 @@ exclude = [
     ".lock",
     ".toml",
     "tests/*.py",
-    "flows/*.py",
 ]
 
 [tool.ruff.lint.mccabe]
@@ -124,4 +124,18 @@ check_untyped_defs = true
 disallow_untyped_decorators = true
 no_implicit_optional = true
 strict_optional = true
-exclude = ['tests', 'flows']
+exclude = ['tests']
+
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__", ".venv"]
+reportMissingImports = true
+pythonVersion = "3.13"
+reportUnusedImport = true
+reportUnusedClass = true
+reportUnusedFunction = true
+reportUnusedVariable = true
+reportDuplicateImport = true
+reportOptionalMemberAccess = false
+reportPrivateImportUsage = false
+reportUnnecessaryIsInstance = false
