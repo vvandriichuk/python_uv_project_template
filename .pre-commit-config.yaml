@@ -13,14 +13,14 @@ repos:
     hooks:
         - id: mypy-check
           name: mypy check
-          entry: uv run mypy src
+          entry: uv run mypy .
           language: system
           types: [ python ]
           pass_filenames: false
 
         - id: pyright-check
           name: pyright check
-          entry: uv run pyright src
+          entry: uv run pyright .
           language: system
           types: [ python ]
           pass_filenames: false
